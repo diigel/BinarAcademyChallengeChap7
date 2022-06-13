@@ -2,17 +2,14 @@ package com.ranggacikal.challengechapter5.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
-import com.ranggacikal.challengechapter5.R
 import com.ranggacikal.challengechapter5.databinding.FragmentMainMenuBinding
-import com.ranggacikal.challengechapter5.databinding.FragmentThirdLandingBinding
 
 class MainMenuFragment : Fragment() {
 
@@ -42,9 +39,9 @@ class MainMenuFragment : Fragment() {
         binding.tvPlayerNameVsComMainMenu.text = playerName
 
         val snackBar = Snackbar.make(binding.root, "Selamat Datang $playerName", Snackbar.LENGTH_LONG)
-        snackBar.setAction("Tutup", View.OnClickListener {
+        snackBar.setAction("Tutup") {
             snackBar.dismiss()
-        })
+        }
         snackBar.show()
 
         binding.imgVsPlayerMainMenu.setOnClickListener {

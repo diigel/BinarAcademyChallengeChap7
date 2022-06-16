@@ -10,12 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ConfigRetrofit {
 
-    private fun provideLoggingInterceptor(): HttpLoggingInterceptor{
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        return loggingInterceptor
-    }
-
     private fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder().apply {
             addInterceptor(

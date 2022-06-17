@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ranggacikal.challengechapter5.model.LoginResponse
-import com.ranggacikal.challengechapter5.model.RegisterResponse
 import com.ranggacikal.challengechapter5.repository.RepositoryImpl
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +24,8 @@ class LoginViewModel : ViewModel() {
                 ) {
                     if (response.isSuccessful) {
                         loginEvent.value = response.body()
+                    }else {
+                        loginEvent.value = LoginResponse(success = false)
                     }
                 }
 

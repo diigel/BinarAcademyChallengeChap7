@@ -2,6 +2,7 @@ package com.ranggacikal.challengechapter5.network
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,22 +13,17 @@ object ConfigRetrofit {
 
     private  const val BASE_URL = "https://binar-gdd-cc8.herokuapp.com"
 
-    private fun provideLoggingInterceptor(): HttpLoggingInterceptor{
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        return loggingInterceptor
-    }
-
     private fun provideOkHttpClient(): OkHttpClient {
-        val builder = OkHttpClient.Builder()
-            .addInterceptor(provideLoggingInterceptor())
-            .retryOnConnectionFailure(false)
-            .callTimeout(1, TimeUnit.MINUTES)
-            .connectTimeout(1, TimeUnit.MINUTES)
-            .readTimeout(1, TimeUnit.MINUTES)
-
-
-        return builder.build()
+        return OkHttpClient.Builder().apply {
+            addInterceptor(
+                Interceptor { chain ->
+                    val builder = chain.request().newBuilder()
+                    builder.header("Test-App-Version", "1.0")
+                    builder.header("X-Platform", "Android")
+                    return@Interceptor chain.proceed(builder.build())
+                }
+            )
+        }.build()
     }
 
     private fun provideRetrofit(): Retrofit {

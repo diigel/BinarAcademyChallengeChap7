@@ -1,18 +1,12 @@
 package com.ranggacikal.challengechapter5
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.ranggacikal.challengechapter5.databinding.ActivityRegisterBinding
-import com.ranggacikal.challengechapter5.model.RegisterResponse
-import com.ranggacikal.challengechapter5.network.ConfigRetrofit
 import com.ranggacikal.challengechapter5.ui.viewModel.RegisterViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
@@ -45,27 +39,22 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
                 registerViewModel.requestRegister(email,username, password)
-                registerViewModel.registerEvent.observe(this@RegisterActivity) { registerResponse ->
-                    var status = registerResponse.success
-                    if (!status) {
-                        Toast.makeText(
-                            this@RegisterActivity,
-                            registerResponse.errors,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(this@RegisterActivity, "Berhasil", Toast.LENGTH_SHORT).show()
-
-                        val intent = Intent(Intent(this@RegisterActivity,LoginActivity::class.java))
-                        startActivity(intent)
-                    }
-                }
-
             }
 
             btnKembali.setOnClickListener {
                 val intt = Intent(Intent(this@RegisterActivity,LoginActivity::class.java))
                 startActivity(intt)
+            }
+
+            registerViewModel.registerEvent.observe(this@RegisterActivity) { registerResponse ->
+                if (registerResponse.success == false) {
+                    Toast.makeText(this@RegisterActivity, registerResponse.errors, Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@RegisterActivity, "Berhasil", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(Intent(this@RegisterActivity,LoginActivity::class.java))
+                    startActivity(intent)
+                }
             }
         }
     }

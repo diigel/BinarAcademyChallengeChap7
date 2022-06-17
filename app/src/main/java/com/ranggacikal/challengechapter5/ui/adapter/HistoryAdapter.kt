@@ -15,7 +15,7 @@ class HistoryAdapter(val history: List<History>) :
 
     class HistoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val txtWaktu: TextView = itemView.findViewById(R.id.tv_item_time)
-        val txtNama: TextView = itemView.findViewById(R.id.tv_item_nama)
+        val txtNama: TextView = itemView.findViewById(R.id.tv_item_message)
         val txtHasil: TextView = itemView.findViewById(R.id.tv_item_hasil)
     }
 

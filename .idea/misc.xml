@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BinarAcademyChallengeChap7/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/BinarAcademyChallengeChap7/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/BinarAcademyChallengeChap7/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/circle_select.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/circle_stroke.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/circle_unselect.xml" value="0.23703703703703705" />

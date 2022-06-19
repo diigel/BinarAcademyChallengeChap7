@@ -9,4 +9,9 @@
     <string name="text_title_third_landing">Tuliskan namamu dibawah</string>
     <string name="text_name_hint">Nama Anda</string>
     <string name="text_title_main_menu">Pilih Lawanmu</string>
+    <string name="email">Email</string>
+    <string name="username">username</string>
+    <string name="Password">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 </resources>

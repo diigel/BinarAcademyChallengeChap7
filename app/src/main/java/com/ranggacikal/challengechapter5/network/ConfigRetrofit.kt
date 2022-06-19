@@ -4,11 +4,12 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ConfigRetrofit {
+
+    private  const val BASE_URL = "https://binar-gdd-cc8.herokuapp.com"
 
     private fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder().apply {
@@ -17,7 +18,6 @@ object ConfigRetrofit {
                     val builder = chain.request().newBuilder()
                     builder.header("Test-App-Version", "1.0")
                     builder.header("X-Platform", "Android")
-                    builder.header("X-Auth-Token", "sgsrager32524542afg3423")
                     return@Interceptor chain.proceed(builder.build())
                 }
             )
@@ -33,7 +33,7 @@ object ConfigRetrofit {
             .create()
 
         val builder = Retrofit.Builder()
-            .baseUrl("https://binar-gdd-cc8.herokuapp.com")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(provideOkHttpClient())
 

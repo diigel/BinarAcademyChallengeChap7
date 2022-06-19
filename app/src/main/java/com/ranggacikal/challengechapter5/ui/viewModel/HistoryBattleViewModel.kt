@@ -25,9 +25,9 @@ class HistoryBattleViewModel: ViewModel() {
                     historyBattle.postValue(response.body())
                 } else {
                     historyBattle.value = null
-                    historyBattle.postValue(
-
-                    )
+//                    historyBattle.postValue(
+//
+//                    )
                 }
             }
 

@@ -11,6 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChallengeChapter5">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.RegisterFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.viewModel.RegisterFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LoginScreen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

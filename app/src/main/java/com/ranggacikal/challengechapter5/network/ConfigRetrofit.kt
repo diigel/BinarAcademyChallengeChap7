@@ -33,7 +33,7 @@ object ConfigRetrofit {
             .create()
 
         val builder = Retrofit.Builder()
-            .baseUrl("Test")
+            .baseUrl("https://binar-gdd-cc8.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(provideOkHttpClient())
 

@@ -21,9 +21,13 @@ class HistoryBattleViewModel: ViewModel() {
                 response: Response<BattleHistoryResponse>
             ) {
                 if(response.isSuccessful) {
-                    historyBattle.value = response.body()
+//                    historyBattle.value = response.body()
+                    historyBattle.postValue(response.body())
                 } else {
                     historyBattle.value = null
+                    historyBattle.postValue(
+
+                    )
                 }
             }
 

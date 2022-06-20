@@ -64,7 +64,7 @@ class GameFragment : Fragment(), GameView {
             refreshAll()
         }
         binding.imgClose.setOnClickListener {
-            val action = GameFragmentDirections.actionBackToMenu(args.playerNameGame)
+            val action = GameFragmentDirections.actionBackToMenu()
             Navigation.findNavController(binding.root).navigate(action)
         }
     }

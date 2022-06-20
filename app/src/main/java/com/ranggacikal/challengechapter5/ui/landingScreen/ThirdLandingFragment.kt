@@ -62,7 +62,7 @@ class ThirdLandingFragment : Fragment() {
         })
         binding.imgNextThirdLanding.setOnClickListener {
             val playerName = binding.edtNamaPemain.text.toString()
-            val action = LandingFragmentDirections.actionToMainMenu(playerName)
+            val action = LandingFragmentDirections.actionToMainMenu()
             Navigation.findNavController(binding.clThirdLanding).navigate(action)
             val prefs = sharedPreference.customPreference(requireContext(), CUSTOM_PREF_NAME)
             prefs.userName = playerName

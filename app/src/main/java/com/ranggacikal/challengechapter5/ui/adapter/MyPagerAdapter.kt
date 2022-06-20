@@ -11,8 +11,7 @@ class MyPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
 
     private val pages = listOf(
         FirstLandingFragment(),
-        SecondLandingFragment(),
-        ThirdLandingFragment()
+        SecondLandingFragment()
     )
 
     override fun getCount(): Int {

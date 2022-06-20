@@ -108,7 +108,7 @@ class GamePresenter(val data: GameView) {
         }
         btnBackMenu.setOnClickListener {
             dialog.dismiss()
-            val action = GameFragmentDirections.actionBackToMenu(name)
+            val action = GameFragmentDirections.actionBackToMenu()
             Navigation.findNavController(root).navigate(action)
         }
         dialog.show()
@@ -137,7 +137,7 @@ class GamePresenter(val data: GameView) {
         }
         btnBackMenu.setOnClickListener {
             dialog.dismiss()
-            val action = GameFragmentDirections.actionBackToMenu(playerName)
+            val action = GameFragmentDirections.actionBackToMenu()
             Navigation.findNavController(root).navigate(action)
         }
         dialog.show()
@@ -161,7 +161,7 @@ class GamePresenter(val data: GameView) {
         }
         btnBackMenu.setOnClickListener {
             dialog.dismiss()
-            val action = GameFragmentDirections.actionBackToMenu(name)
+            val action = GameFragmentDirections.actionBackToMenu()
             Navigation.findNavController(root).navigate(action)
         }
         dialog.show()

@@ -10,11 +10,14 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.ranggacikal.challengechapter5.databinding.FragmentMainMenuBinding
+import com.ranggacikal.challengechapter5.sharedPreferences.PreferenceHelper
+import com.ranggacikal.challengechapter5.sharedPreferences.PreferenceHelper.userName
 
 class MainMenuFragment : Fragment() {
 
     lateinit var binding: FragmentMainMenuBinding
-    private val args: MainMenuFragmentArgs by navArgs()
+    val CUSTOM_PREF_NAME = "user_data"
+    lateinit var sharedPreference: PreferenceHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,24 +35,25 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val playerName = args.playerName
+        sharedPreference = PreferenceHelper
+        val prefs = sharedPreference.customPreference(requireContext(), CUSTOM_PREF_NAME)
 
-        binding.tvPlayerNameMainMenu.text = playerName
-        binding.tvPlayerNameVsComMainMenu.text = playerName
+        binding.tvPlayerNameMainMenu.text = prefs.userName.toString()
+        binding.tvPlayerNameVsComMainMenu.text = prefs.userName.toString()
 
-        val snackBar = Snackbar.make(binding.root, "Selamat Datang $playerName", Snackbar.LENGTH_LONG)
+        val snackBar = Snackbar.make(binding.root, "Selamat Datang ${prefs.userName.toString()}", Snackbar.LENGTH_LONG)
         snackBar.setAction("Tutup") {
             snackBar.dismiss()
         }
         snackBar.show()
 
         binding.imgVsPlayerMainMenu.setOnClickListener {
-            val action = MainMenuFragmentDirections.actionToGame(playerName, "player")
+            val action = MainMenuFragmentDirections.actionToGame(prefs.userName.toString(), "player")
             Navigation.findNavController(binding.root).navigate(action)
         }
 
         binding.imgVsComMainMenu.setOnClickListener {
-            val action = MainMenuFragmentDirections.actionToGame(playerName, "com")
+            val action = MainMenuFragmentDirections.actionToGame(prefs.userName.toString(), "com")
             Navigation.findNavController(binding.root).navigate(action)
         }
 

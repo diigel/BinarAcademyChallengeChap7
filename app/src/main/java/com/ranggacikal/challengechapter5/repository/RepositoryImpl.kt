@@ -1,5 +1,6 @@
 package com.ranggacikal.challengechapter5.repository
 
+import com.ranggacikal.challengechapter5.model.AuthResponse
 import com.ranggacikal.challengechapter5.model.LoginResponse
 import com.ranggacikal.challengechapter5.model.RegisterResponse
 import com.ranggacikal.challengechapter5.model.ResponseDataUsers
@@ -24,6 +25,10 @@ class RepositoryImpl: Repository {
         password: String
     ):Call<LoginResponse>{
         return ConfigRetrofit.getApiService().LoginUser(email,password)
+    }
+
+    override fun authToken(token: String): Call<AuthResponse> {
+        return ConfigRetrofit.getApiService().getUser(token)
     }
 
 }

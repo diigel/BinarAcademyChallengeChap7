@@ -1,5 +1,6 @@
 package com.ranggacikal.challengechapter5.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,12 +30,12 @@ class HistoryBattleAdapter: RecyclerView.Adapter<HistoryBattleAdapter.HistoryBat
     }
 
     inner class HistoryBattleViewHolder(private val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root) {
-
         fun bind (historyBattleData: BattleHistoryResponse.Data) = binding.run {
             tvItemTime.text = historyBattleData.createdAt
             tvItemHasil.text = historyBattleData.result
             tvItemMode.text = historyBattleData.mode
-            tvItemMessage.text = historyBattleData.message
+//            tvItemMessage.text = historyBattleData.message
+            tvItemMessage.text = "historyBattleData.message"
         }
     }
 

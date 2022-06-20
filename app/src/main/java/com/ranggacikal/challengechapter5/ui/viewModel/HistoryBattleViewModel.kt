@@ -1,5 +1,6 @@
 package com.ranggacikal.challengechapter5.ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,14 +21,12 @@ class HistoryBattleViewModel: ViewModel() {
                 call: Call<BattleHistoryResponse>,
                 response: Response<BattleHistoryResponse>
             ) {
+                Log.i("Response", "${response.body()}")
+                Log.i("Response 2", "$response")
                 if(response.isSuccessful) {
-//                    historyBattle.value = response.body()
                     historyBattle.postValue(response.body())
                 } else {
-                    historyBattle.value = null
-//                    historyBattle.postValue(
-//
-//                    )
+                    historyBattle.postValue(emptyArray<BattleHistoryResponse>())
                 }
             }
 
@@ -37,4 +36,8 @@ class HistoryBattleViewModel: ViewModel() {
         })
         return historyBattle
     }
+}
+
+private fun <T> MutableLiveData<T>.postValue(emptyArray: Array<T>): Array<T> {
+return emptyArray
 }

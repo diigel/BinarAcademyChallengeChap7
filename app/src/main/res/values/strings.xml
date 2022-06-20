@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ChallengeChapter5</string>
+    <string name="app_name">ChallengeChapter7</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment 1</string>
     <string name="hello_blank_fragment2">Hello blank fragment 2</string>
@@ -10,7 +10,7 @@
     <string name="text_name_hint">Nama Anda</string>
     <string name="text_title_main_menu">Pilih Lawanmu</string>
     <string name="email">Email</string>
-    <string name="username">username</string>
+    <string name="username">Username</string>
     <string name="Password">Password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>

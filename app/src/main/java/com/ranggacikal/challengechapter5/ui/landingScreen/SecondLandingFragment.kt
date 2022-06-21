@@ -1,10 +1,13 @@
 package com.ranggacikal.challengechapter5.ui.landingScreen
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ranggacikal.challengechapter5.LoginActivity
+import com.ranggacikal.challengechapter5.MainActivity
 import com.ranggacikal.challengechapter5.R
 import com.ranggacikal.challengechapter5.databinding.FragmentLandingBinding
 import com.ranggacikal.challengechapter5.databinding.FragmentSecondLandingBinding
@@ -28,5 +31,9 @@ class SecondLandingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.imgNextThirdLanding.setOnClickListener {
+            val intent = Intent(Intent(requireContext(), LoginActivity::class.java))
+            startActivity(intent)
+        }
     }
 }

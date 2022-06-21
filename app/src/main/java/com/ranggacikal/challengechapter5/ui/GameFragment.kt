@@ -1,5 +1,6 @@
 package com.ranggacikal.challengechapter5.ui
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -7,15 +8,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.room.Room
 import com.ranggacikal.challengechapter5.databinding.FragmentGameBinding
 import com.ranggacikal.challengechapter5.db.History
 import com.ranggacikal.challengechapter5.db.HistoryDatabase
+import com.ranggacikal.challengechapter5.sharedPreferences.PreferenceHelper
+import com.ranggacikal.challengechapter5.sharedPreferences.PreferenceHelper.token
 import com.ranggacikal.challengechapter5.ui.model.HasilValidasiPlayerData
 import com.ranggacikal.challengechapter5.ui.presenter.GamePresenter
 import com.ranggacikal.challengechapter5.ui.presenter.GameView
+import com.ranggacikal.challengechapter5.ui.viewModel.LoginViewModel
+import com.ranggacikal.challengechapter5.ui.viewModel.SetBattleResultViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,6 +34,13 @@ class GameFragment : Fragment(), GameView {
     private val args: GameFragmentArgs by navArgs()
     lateinit var presenter: GamePresenter
     private var db: HistoryDatabase? = null
+
+    lateinit var gameMode: String
+    private val battleResultviewModel: SetBattleResultViewModel by viewModels()
+
+    lateinit var sharedPreference: PreferenceHelper
+    val CUSTOM_PREF_NAME = "user_data"
+    lateinit var token: String
 
     var selectedPlayer: Int = 0
 
@@ -50,13 +64,19 @@ class GameFragment : Fragment(), GameView {
         binding.tvPlayerNameGame.text = args.playerNameGame
         db = HistoryDatabase.getInstance(requireContext())
 
+        sharedPreference = PreferenceHelper
+        val prefs = sharedPreference.customPreference(requireContext(), CUSTOM_PREF_NAME)
+        token = prefs.token ?: ""
+
         when (pilihanLawan) {
             "player" -> {
                 binding.tvPlayer2.text = "Player 2"
+                gameMode = "Multiplayer"
                 runVersusPlayer()
             }
             else -> {
                 binding.tvPlayer2.text = "COM"
+                gameMode = "Singleplayer"
                 runVersusCom()
             }
         }
@@ -64,7 +84,7 @@ class GameFragment : Fragment(), GameView {
             refreshAll()
         }
         binding.imgClose.setOnClickListener {
-            val action = GameFragmentDirections.actionBackToMenu(args.playerNameGame)
+            val action = GameFragmentDirections.actionBackToMenu()
             Navigation.findNavController(binding.root).navigate(action)
         }
     }
@@ -214,8 +234,10 @@ class GameFragment : Fragment(), GameView {
     }
 
     override fun hasilValidasiPlayer(hasilValidasiPlayerData: HasilValidasiPlayerData) {
+        var result: String
         when (hasilValidasiPlayerData.hasilValidasiPlayer) {
             "win" -> {
+                result = "Player Win"
                 val currentDate = LocalDateTime.now()
                 presenter.showDialogWin(
                     args.playerNameGame, "MENANG",
@@ -229,6 +251,7 @@ class GameFragment : Fragment(), GameView {
             }
 
             "lose" -> {
+                result = "Opponent Win"
                 presenter.showDialogLose(
                     args.pilihanLawan, "MENANG",
                     requireContext(), binding.root, args.playerNameGame
@@ -241,6 +264,7 @@ class GameFragment : Fragment(), GameView {
                 }
             }
             else -> {
+                result = "Draw"
                 presenter.showDialogDraw(
                     args.playerNameGame, "SERI",
                     requireContext(), binding.root
@@ -253,7 +277,16 @@ class GameFragment : Fragment(), GameView {
                 }
             }
         }
-    }
 
+        battleResultviewModel.setBattleResult(token, gameMode, result)
+//        postBattleResult()
+    }
+//    fun postBattleResult() {
+//        battleResultviewModel.setBattleResult().observe(viewLifecycleOwner) { battleResult ->
+//            battleResult.let {
+//                historybattleadapter.addHistoryBattleList(it.data ?: emptyList())
+//            }
+//        }
+//    }
 
 }

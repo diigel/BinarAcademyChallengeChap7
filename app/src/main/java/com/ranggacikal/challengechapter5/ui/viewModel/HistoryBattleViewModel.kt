@@ -15,14 +15,12 @@ class HistoryBattleViewModel: ViewModel() {
     val historyBattle: MutableLiveData<BattleHistoryResponse> = MutableLiveData()
     val repository = RepositoryImpl()
 
-    fun getHistoryBattleList(): LiveData<BattleHistoryResponse> {
-        repository.getHistoryBattle().enqueue(object: Callback<BattleHistoryResponse> {
+    fun getHistoryBattleList(authToken: String): LiveData<BattleHistoryResponse> {
+        repository.getHistoryBattle("Bearer $authToken").enqueue(object: Callback<BattleHistoryResponse> {
             override fun onResponse(
                 call: Call<BattleHistoryResponse>,
                 response: Response<BattleHistoryResponse>
             ) {
-                Log.i("Response", "${response.body()}")
-                Log.i("Response 2", "$response")
                 if(response.isSuccessful) {
                     historyBattle.postValue(response.body())
                 } else {

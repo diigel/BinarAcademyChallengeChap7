@@ -7,10 +7,19 @@ import retrofit2.http.*
 interface ApiService {
     @GET("getDataUser")
     fun getDataUsers(): Call<ResponseDataUsers>
+
     @GET("api/v1/battle")
     fun getBattleHistory(
-        @Header("Authorization") authHeader: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjVkOTY2NmMzMTU5YjAwMTczZmM5Y2UiLCJ1c2VybmFtZSI6ImFsZGlnYW50ZW5nIiwiZW1haWwiOiJzYWJyaW5hX2JpbmFyQHlvcG1haWwuY29tIiwiaWF0IjoxNjU1NzEwODIzLCJleHAiOjE2NTU3MTgwMjN9.1bCx1QReH7z1J0S4lcakWs1LE7Z6-JDHEbw3eNfXBLg"
+        @Header("Authorization") authHeader: String?
     ): Call<BattleHistoryResponse>
+
+    @FormUrlEncoded
+    @POST("api/v1/battle")
+    fun setBattleResult(
+        @Header("Authorization") authHeader: String?,
+        @Field("mode") mode: String,
+        @Field("result") result: String,
+    ): Call<SetBattleResultResponse>
 
     @GET("api/v1/auth/me")
     fun getUser(
@@ -22,7 +31,7 @@ interface ApiService {
     fun RegisterUser(
         @Field("email") email:String,
         @Field("username") username:String,
-        @Field("password")password:String
+        @Field("password") password:String
     ):Call<RegisterResponse>
 
     @FormUrlEncoded

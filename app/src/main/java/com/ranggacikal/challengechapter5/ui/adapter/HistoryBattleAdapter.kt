@@ -32,10 +32,10 @@ class HistoryBattleAdapter: RecyclerView.Adapter<HistoryBattleAdapter.HistoryBat
     inner class HistoryBattleViewHolder(private val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind (historyBattleData: BattleHistoryResponse.Data) = binding.run {
             tvItemTime.text = historyBattleData.createdAt
-            tvItemHasil.text = historyBattleData.result
+
+            tvItemResult.text = historyBattleData.result
             tvItemMode.text = historyBattleData.mode
-//            tvItemMessage.text = historyBattleData.message
-            tvItemMessage.text = "historyBattleData.message"
+            tvItemMessage.text = historyBattleData.message
         }
     }
 

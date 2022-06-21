@@ -1,9 +1,6 @@
 package com.ranggacikal.challengechapter5.repository
 
-import com.ranggacikal.challengechapter5.model.BattleHistoryResponse
-import com.ranggacikal.challengechapter5.model.LoginResponse
-import com.ranggacikal.challengechapter5.model.RegisterResponse
-import com.ranggacikal.challengechapter5.model.ResponseDataUsers
+import com.ranggacikal.challengechapter5.model.*
 import com.ranggacikal.challengechapter5.network.ConfigRetrofit
 import retrofit2.Call
 
@@ -12,8 +9,12 @@ class RepositoryImpl: Repository {
         return ConfigRetrofit.getApiService().getDataUsers()
     }
 
-    override fun getHistoryBattle(): Call<BattleHistoryResponse> {
-        return ConfigRetrofit.getApiService().getBattleHistory()
+    override fun getHistoryBattle(token: String): Call<BattleHistoryResponse> {
+        return ConfigRetrofit.getApiService().getBattleHistory(token)
+    }
+
+    override fun setBattleResult(token: String, mode: String, result: String): Call<SetBattleResultResponse> {
+        return ConfigRetrofit.getApiService().setBattleResult(token, mode, result)
     }
 
     override fun requestRegister(
@@ -29,6 +30,10 @@ class RepositoryImpl: Repository {
         password: String
     ):Call<LoginResponse>{
         return ConfigRetrofit.getApiService().LoginUser(email,password)
+    }
+
+    override fun authToken(token: String): Call<AuthResponse> {
+        return ConfigRetrofit.getApiService().getUser(token)
     }
 
 }

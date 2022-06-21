@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/landingFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -38,9 +38,6 @@
         android:name="com.ranggacikal.challengechapter5.ui.MainMenuFragment"
         android:label="fragment_main_menu"
         tools:layout="@layout/fragment_main_menu">
-        <argument
-            android:name="playerName"
-            app:argType="string" />
         <action
             android:id="@+id/action_to_game"
             app:destination="@id/gameFragment" />

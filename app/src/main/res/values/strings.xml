@@ -14,4 +14,8 @@
     <string name="Password">Password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="timestamp_play">waktu Main</string>
+    <string name="mode">Mode</string>
+    <string name="result">Result</string>
+    <string name="message">Message</string>
 </resources>

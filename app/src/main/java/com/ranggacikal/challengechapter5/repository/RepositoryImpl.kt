@@ -1,15 +1,20 @@
 package com.ranggacikal.challengechapter5.repository
 
-import com.ranggacikal.challengechapter5.model.AuthResponse
-import com.ranggacikal.challengechapter5.model.LoginResponse
-import com.ranggacikal.challengechapter5.model.RegisterResponse
-import com.ranggacikal.challengechapter5.model.ResponseDataUsers
+import com.ranggacikal.challengechapter5.model.*
 import com.ranggacikal.challengechapter5.network.ConfigRetrofit
 import retrofit2.Call
 
 class RepositoryImpl: Repository {
     override fun getDataUser(): Call<ResponseDataUsers> {
         return ConfigRetrofit.getApiService().getDataUsers()
+    }
+
+    override fun getHistoryBattle(token: String): Call<BattleHistoryResponse> {
+        return ConfigRetrofit.getApiService().getBattleHistory(token)
+    }
+
+    override fun setBattleResult(token: String, mode: String, result: String): Call<SetBattleResultResponse> {
+        return ConfigRetrofit.getApiService().setBattleResult(token, mode, result)
     }
 
     override fun requestRegister(

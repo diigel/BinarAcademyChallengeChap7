@@ -1,7 +1,5 @@
 package com.ranggacikal.challengechapter5
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController

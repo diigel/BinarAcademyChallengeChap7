@@ -27,15 +27,19 @@
         <entry key="app/src/main/res/drawable/circle_select.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/circle_stroke.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/circle_unselect.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2523076923076923" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/dialog_hasil.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_first_landing.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_game.xml" value="0.2314052151187215" />
         <entry key="app/src/main/res/layout/fragment_landing.xml" value="0.20889332863145307" />
+        <entry key="app/src/main/res/layout/fragment_leader_board.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_main_menu.xml" value="0.2703125" />
-        <entry key="app/src/main/res/layout/fragment_second_landing.xml" value="0.2703125" />
+        <entry key="app/src/main/res/layout/fragment_second_landing.xml" value="0.23775177001953127" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.2537037037037037" />
         <entry key="app/src/main/res/layout/fragment_third_landing.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_history.xml" value="0.335" />
       </map>
     </option>
   </component>

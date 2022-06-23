@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ranggacikal.challengechapter5.databinding.FragmentLeaderBoardBinding
@@ -40,7 +41,7 @@ class LeaderBoardFragment : Fragment() {
         sharedPreference = PreferenceHelper
         val prefs = sharedPreference.customPreference(requireContext(), CUSTOM_PREF_NAME)
 
-        binding.rvHistory.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.rvHistory.layoutManager = GridLayoutManager(context,1)
         binding.rvHistory.adapter = historybattleadapter
 
         viewModel.getHistoryBattleList(prefs.token ?: "")
